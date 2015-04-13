@@ -1,0 +1,2 @@
+# Starte jar-file
+/c/Program\ Files/Java/jdk1.8.0_25/bin/java -jar target/springboot.jar

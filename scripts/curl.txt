@@ -1,0 +1,4 @@
+# Timestamp als JSON oder HTML holen
+curl -X GET -H "Accept:application/json" http://localhost:8080/timestamp
+curl -X GET -H "Accept:text/html" http://localhost:8080/timestamp
+
