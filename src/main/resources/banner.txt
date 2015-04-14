@@ -1,0 +1,10 @@
+ _______  __    _    __  __ ____  _     _____
+| ____\ \/ /   / \  |  \/  |  _ \| |   | ____|
+|  _|  \  /   / _ \ | |\/| | |_) | |   |  _|
+| |___ /  \  / ___ \| |  | |  __/| |___| |___
+|_____/_/\_\/_/   \_\_|  |_|_|   |_____|_____|
+
+In Version ${application.version} auf Spring Boot ${spring-boot.version}.
+
+User: ${security.user.name}
+Passord: ${security.user.password}

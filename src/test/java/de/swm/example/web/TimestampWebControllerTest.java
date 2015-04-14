@@ -38,7 +38,7 @@ import static org.junit.Assert.assertEquals;
 @TransactionConfiguration(defaultRollback = true)
 public class TimestampWebControllerTest {
 
-	public static final String HTTP_LOCALHOST_RANDOM_PORT_PATTERN = "http://localhost:%d/index.html";
+	public static final String HTTP_LOCALHOST_RANDOM_PORT_PATTERN = "http://foo:bar@localhost:%d/index.html";
 	RestTemplate template = new TestRestTemplate();
 
 	@Autowired

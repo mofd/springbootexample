@@ -13,15 +13,22 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.TestRestTemplate;
 import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.ClientHttpRequestExecution;
+import org.springframework.http.client.ClientHttpRequestInterceptor;
+import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Date;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * TODO (KS) Dokumentieren.
@@ -36,7 +43,7 @@ import static org.junit.Assert.*;
 public class TimestampJsonControllerTest {
 
 	public static final String HTTP_LOCALHOST_RANDOM_PORT_PATTERN = "http://localhost:%d/timestamps";
-	RestTemplate template = new TestRestTemplate();
+	TestRestTemplate template = new TestRestTemplate();
 
 	@Autowired
 	private TimestampRepository timestampRepository;
@@ -50,6 +57,18 @@ public class TimestampJsonControllerTest {
 			timestampRepository.saveAndFlush(new Timestamp(new Date()));
 			Thread.sleep(1);
 		}
+
+		ClientHttpRequestInterceptor securityInterceptor = new ClientHttpRequestInterceptor() {
+			@Override
+			public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
+				HttpHeaders headers = request.getHeaders();
+				headers.add("Authorization", "Basic " + Base64.getEncoder().encodeToString("foo:bar".getBytes()));
+				return execution.execute(request, body);
+			}
+		};
+		template.setInterceptors(new ArrayList<ClientHttpRequestInterceptor>() {{
+			this.add(securityInterceptor);
+		}});
 	}
 
 	@After
