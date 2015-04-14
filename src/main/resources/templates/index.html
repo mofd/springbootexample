@@ -9,8 +9,14 @@
 Index
 
 <ul>
-	<li><a th:href="@{/timestamp}">Timestamp</a> </li>
+	<li><a th:href="@{/timestamps}">Timestamps</a> </li>
+	<li>
+		<form id="createNewTimestampForm" th:action="@{/timestamps}" method="post">
+			<input id="createNewTimestampSubmit" type="submit" value="Neues Timestamp erzeugen"/>
+		</form>
+	</li>
 </ul>
+
 
 </body>
 </html>
