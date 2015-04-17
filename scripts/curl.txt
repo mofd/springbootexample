@@ -6,3 +6,4 @@ curl -X GET -H "Accept:text/html" http://localhost:8080/timestamps
 curl -X POST -H "Accept:text/html" http://localhost:8080/timestamps
 curl -X GET -H "Accept:application/json" http://localhost:8080/timestamps
 
+curl -X POST  http://foo:bar@localhost:8080/shutdown

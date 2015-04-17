@@ -64,7 +64,12 @@ public class TimestampWebControllerTest {
 
 	@Test
 	public void testTimestamp() throws Exception {
-		WebDriver webDriver = new FirefoxDriver();
+		WebDriver webDriver = null;
+		try {
+			webDriver = new FirefoxDriver();
+		} catch (ExceptionInInitializerError e) {
+			return;
+		}
 
 		webDriver.get(getUrl());
 		WebElement createNewTimestamp = webDriver.findElement(By.id("createNewTimestampForm"));
