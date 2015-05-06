@@ -55,6 +55,7 @@ public class TimestampWebControllerTest {
 		}
 
 		System.setProperty("webdriver.firefox.bin", "C:\\Program Files (x86)\\Mozilla Firefox 26\\firefox.exe");
+//		System.setProperty("webdriver.firefox.bin", "/Applications/Firefox.app/Contents/MacOS/firefox-bin");
 	}
 
 	@After
