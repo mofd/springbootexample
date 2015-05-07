@@ -77,6 +77,16 @@
 
     <build>
         <finalName>springboot</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>public</directory>
+                <targetPath>public</targetPath>
+            </resource>
+        </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
